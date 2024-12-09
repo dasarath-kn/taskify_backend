@@ -32,9 +32,16 @@ const initializeSocket = (server) => {
             if (data) {
                 data.userId = user_id;
                 console.log(data);
-                const tasks = new taskModel_1.default(data);
-                yield tasks.save();
-                socket.emit('task_added', { message: "Task added successfully" });
+                const { taskname } = data;
+                const datas = yield taskModel_1.default.findOne({ taskname: taskname });
+                if (datas) {
+                    socket.emit('task_failed', { message: "Task already successfully" });
+                }
+                else {
+                    const tasks = new taskModel_1.default(data);
+                    yield tasks.save();
+                    socket.emit('task_added', { message: "Task added successfully" });
+                }
             }
             console.log(data, user_id);
         }));

@@ -21,7 +21,7 @@ const server = http_1.default.createServer(app);
 app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 const corsOptions = {
-    origin: 'https://taskify-chi-seven.vercel.app',
+    origin: process.env.FRONTEND_PORT,
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true

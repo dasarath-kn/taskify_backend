@@ -16,7 +16,7 @@ initializeSocket(server)
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));
 const corsOptions = {
-    origin: ['https://taskify-chi-seven.vercel.app','http://localhost:5173'], 
+    origin:process.env.FRONTEND_PORT, 
     methods: 'GET,POST,PUT,DELETE', 
     allowedHeaders: ['Content-Type', 'Authorization'], 
     credentials: true
