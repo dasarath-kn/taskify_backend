@@ -148,3 +148,21 @@ try {
 
 }
 }
+
+export const userDatas =async(req:Request,res:Response)=>{
+    try {
+        const {userId} =req
+        console.log(userId);
+        const completedTasks =await UserModel.find()
+        console.log(completedTasks);
+        if(completedTasks){
+            
+            res.status(200).json({success:true,message:"Completed task data sent successfully",completedTasks})
+        }else{
+            res.status(400).json({success:false,message:"Failed to sent completed tasks"})
+        }
+    } catch (error) {
+        console.error(error);
+    
+    }
+    }

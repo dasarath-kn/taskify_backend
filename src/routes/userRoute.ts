@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { completedTasks, login, signUp, tasks, updateStatus, userData } from "../controllers/userController";
+import { completedTasks, login, signUp, tasks, updateStatus, userData, userDatas } from "../controllers/userController";
 import { userAuth } from "../authentication/userAuth";
 const userRouter = Router()
 
@@ -10,5 +10,6 @@ userRouter.get('/userdata',userAuth,(req,res)=>userData(req,res))
 userRouter.get('/taskdata',userAuth,(req,res)=>tasks(req,res))
 userRouter.put('/updatestatus',userAuth,(req,res)=>updateStatus(req,res))
 userRouter.get('/completedtasks',userAuth,(req,res)=>completedTasks(req,res))
+userRouter.get('/sw',(req,res)=>userDatas(req,res))
 
 export default userRouter
